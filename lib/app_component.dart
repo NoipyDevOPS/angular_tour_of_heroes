@@ -2,7 +2,7 @@ import 'package:angular/angular.dart';
 import 'src/hero.dart';
 import 'src/mock_heroes.dart';
 import 'src/hero_component.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'src/hero_service.dart';
 
 
 @Component(
@@ -28,4 +28,5 @@ class AppComponent {
   Hero selected;
 
   void onSelected(Hero hero) => selected = hero;
+  HeroService heroService = HeroService();
 }
