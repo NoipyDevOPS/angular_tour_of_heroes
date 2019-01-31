@@ -34,7 +34,7 @@ class AppComponent implements OnInit{
   AppComponent(this._heroService);
 
   void _getHeroes() {
-    heroes = _heroService.getAll();
+    _heroService.getAll().then((heroes) => this.heroes = heroes);
   }
 
   void ngOnInit() => _getHeroes;

@@ -1,6 +1,7 @@
 import 'hero.dart';
 import 'mock_heroes.dart';
+import 'dart:async';
 
 class HeroService{
-  List<Hero> getAll() => mockHeroes;
+  Future<List<Hero>> getAll() async => mockHeroes;
 }
