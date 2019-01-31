@@ -1,10 +1,12 @@
 import 'package:angular/angular.dart';
 import 'src/hero.dart';
 import 'src/mock_heroes.dart';
+import 'src/hero_component.dart';
 import 'package:angular_forms/angular_forms.dart';
 
+
 @Component(
-  selector: 'my-hero',
+  selector: 'my-app',
   templateUrl: 'app_component.html',
   styleUrls: ['app_component.css'],
   template: '''
@@ -16,7 +18,7 @@ import 'package:angular_forms/angular_forms.dart';
       <input [(ngModel)]="hero.name" placeholder="name">
     </div>
   </div>''',
-  directives: [coreDirectives, formDirectives],
+  directives: [coreDirectives, HeroCompoenent],
 )
 
 class AppComponent {
@@ -27,8 +29,3 @@ class AppComponent {
 
   void onSelected(Hero hero) => selected = hero;
 }
-
-class HeroComponent {
-
-}
-
