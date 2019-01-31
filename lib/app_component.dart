@@ -21,7 +21,7 @@ import 'src/hero_service.dart';
   providers: [ClassProvider(HeroService)],
 )
 
-class AppComponent {
+class AppComponent implements OnInit{
   //var name = 'Angular Dart';
   final title = 'Tour of Heroes';
   final HeroService _heroService;
@@ -36,4 +36,6 @@ class AppComponent {
   void _getHeroes() {
     heroes = _heroService.getAll();
   }
+
+  void ngOnInit() => _getHeroes;
 }
