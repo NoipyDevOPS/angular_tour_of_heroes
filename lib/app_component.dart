@@ -29,13 +29,12 @@ class AppComponent implements OnInit{
   List<Hero> heroes;
   Hero selected;
 
-  void onSelected(Hero hero) => selected = hero;
-  
   AppComponent(this._heroService);
 
   void _getHeroes() {
     _heroService.getAll().then((heroes) => this.heroes = heroes);
   }
 
+  void onSelected(Hero hero) => selected = hero;
   void ngOnInit() => _getHeroes;
 }
