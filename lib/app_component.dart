@@ -1,6 +1,5 @@
 import 'package:angular/angular.dart';
 import 'src/hero.dart';
-import 'src/mock_heroes.dart';
 import 'src/hero_component.dart';
 import 'src/hero_service.dart';
 
@@ -19,14 +18,22 @@ import 'src/hero_service.dart';
     </div>
   </div>''',
   directives: [coreDirectives, HeroCompoenent],
+  providers: [ClassProvider(HeroService)],
 )
 
 class AppComponent {
   //var name = 'Angular Dart';
   final title = 'Tour of Heroes';
-  List<Hero> heroes = mockHeroes;
+  final HeroService _heroService;
+  HeroService heroService = HeroService();
+  List<Hero> heroes;
   Hero selected;
 
   void onSelected(Hero hero) => selected = hero;
-  HeroService heroService = HeroService();
+  
+  AppComponent(this._heroService);
+
+  void _getHeroes() {
+    heroes = _heroService.getAll();
+  }
 }
