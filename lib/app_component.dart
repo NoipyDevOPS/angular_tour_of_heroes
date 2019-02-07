@@ -22,7 +22,6 @@ import 'src/hero_service.dart';
 )
 
 class AppComponent implements OnInit{
-  //var name = 'Angular Dart';
   final title = 'Tour of Heroes';
   final HeroService _heroService;
   HeroService heroService = HeroService();
