@@ -7,6 +7,7 @@ import 'route_paths.dart';
 
 @Component(
   selector: 'my-hero',
+  templateUrl: 'hero_component.html',
   template:'''
     <div *ngIf="hero != null">
       <h2>{{hero.name}}</h2>
@@ -34,4 +35,5 @@ class HeroCompoenent implements OnActivate {
     
   }
 
+  void goBack() => _location.back();
 }

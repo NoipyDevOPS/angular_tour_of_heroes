@@ -18,5 +18,14 @@
 </div>
 
 <div *ngIf="hero != null">
-  
+  <h2>{{hero.name}}</h2>
+  <div>
+    <label>id: </label>{{hero.id}}</div>
+  </div>
+
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="hero.name" placeholder="name"> 
+  </div>
+  <button (click)="goBack()">Back</button>
 </div>
