@@ -4,10 +4,18 @@ import 'package:http/http.dart';
 import 'hero.dart';
 
 class HeroService{
-
   static const _heroesUrl = 'api/heroes'; // URL to web API
-
   final Client _http;
+
+  Future<Hero> get(int id) async {
+    try {
+      final response = await _http.get('$_heroesUrl/$id');
+      return Hero.fromJson(_extractData(response));
+    } 
+    catch (e) {
+    throw _handleError(e);
+    }
+  }
 
   HeroService(this._http);
 
