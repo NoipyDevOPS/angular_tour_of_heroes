@@ -1,8 +1,8 @@
 import 'package:angular/angular.dart';
-import 'src/hero.dart';
-import 'src/hero_component.dart';
-import 'src/hero_service.dart';
-
+import 'hero.dart';
+import 'hero_component.dart';
+import 'hero_service.dart';
+import 'package:angular_router/angular_router.dart';
 
 @Component(
   selector: 'my-heroes',
@@ -19,16 +19,18 @@ import 'src/hero_service.dart';
   </div>''',
   directives: [coreDirectives, HeroCompoenent],
   providers: [ClassProvider(HeroService)],
+  pipes: [commonPipes],
 )
 
 class HeroListComponent implements OnInit{
   final title = 'Tour of Heroes';
   final HeroService _heroService;
-  HeroService heroService = HeroService();
+  final Router _router;
+  //HeroService heroService = HeroService();
   List<Hero> heroes;
   Hero selected;
 
-  HeroListComponent(this._heroService);
+  HeroListComponent(this._heroService, this._router);
 
   void _getHeroes() {
     _heroService.getAll().then((heroes) => this.heroes = heroes);
@@ -36,4 +38,6 @@ class HeroListComponent implements OnInit{
 
   void onSelected(Hero hero) => selected = hero;
   void ngOnInit() => _getHeroes;
+
+  Future<NavigationResult> gotoDetail() => null;
 }
