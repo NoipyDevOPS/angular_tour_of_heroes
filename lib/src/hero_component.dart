@@ -17,6 +17,7 @@ import 'route_paths.dart';
         <input [(ngModel)]="hero.name" placeholder="name">
       </div>
     </div>''',
+  styleUrls: ['hero_component.css'],
   directives: [coreDirectives, formDirectives],
 )
 

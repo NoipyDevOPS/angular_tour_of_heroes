@@ -32,12 +32,16 @@ class HeroListComponent implements OnInit{
 
   HeroListComponent(this._heroService, this._router);
 
-  void _getHeroes() {
-    _heroService.getAll().then((heroes) => this.heroes = heroes);
+  Future<void> _getHeroes() async {
+    heroes = await _heroService.getAll();
   }
 
-  void onSelected(Hero hero) => selected = hero;
   void ngOnInit() => _getHeroes;
 
-  Future<NavigationResult> gotoDetail() => null;
+  void onSelected(Hero hero) => selected = hero;
+  
+  String _heroUrl(int id) => RoutePaths.hero.toUrl(parameters: {idParam: '$id'});
+
+
+   Future<NavigationResult> gotoDetail() => _router.navigate(_heroUrl(selected.id));
 }

@@ -7,3 +7,8 @@ class RoutePaths {
   static final heroes = RoutePath(path: 'heroes');
   static final dashboard = RoutePath(path: 'dashboard');
 }
+
+int getId(Map<String, String> parameters) {
+  final id = parameters[idParam];
+  return id == null ? null : int.tryParse(id);
+}
