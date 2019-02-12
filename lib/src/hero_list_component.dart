@@ -7,7 +7,7 @@ import 'package:angular_router/angular_router.dart';
 @Component(
   selector: 'my-heroes',
   templateUrl: 'hero_list_component.html',
-  styleUrls: ['hero_list__component.css'],
+  styleUrls: ['hero_list_component.css'],
   template: '''
   <div *ngIf="hero != null">
     <h2>{{hero.name}}</h2>
