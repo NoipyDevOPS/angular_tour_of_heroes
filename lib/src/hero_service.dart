@@ -26,10 +26,12 @@ class HeroService{
         .map((json) => Hero.fromJson(json))
         .toList();
       return heroes;
-    }  catch (e) {
-    throw _handleError(e);
+    }  
+    catch (e)
+    {
+      throw _handleError(e);
+    }
   }
-}
 
   dynamic _extractData(Response resp) => json.decode(resp.body)['data'];
 
@@ -38,4 +40,17 @@ class HeroService{
     return Exception('Server error; cause: $e');
   }
 
+  static final _headers = {'Content-Type': 'application/json'};
+  Future<Hero> update(Hero hero) async {
+    try
+    {
+      final url = '$_heroesUrl/${hero.id}';
+      final response = await _http.put(url, headers: _headers, body: json.encode(hero));
+      return Hero.fromJson(_extractData(response));
+    }
+    catch (e)
+    {
+      throw _handleError(e);
+    }
+  }
 }
