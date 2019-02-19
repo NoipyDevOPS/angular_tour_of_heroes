@@ -66,7 +66,7 @@ class InMemoryDataService extends MockClient {
     }
     return Response(json.encode({'data': data}), 200, headers: {'content-type': 'application/json'});
   }
-  static resetDB() {
+  static resetDb() {
     _heroesDb = _initialHeroes.map((json) => Hero.fromJson(json)).toList();
     _nextId = _heroesDb.map((hero) => hero.id).fold(0, max) + 1;
   }
