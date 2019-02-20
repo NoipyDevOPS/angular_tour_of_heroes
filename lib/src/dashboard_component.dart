@@ -7,10 +7,11 @@ import 'package:angular_router/angular_router.dart';
 
 @Component(
   selector: 'my-dashboard',
-  template: '<h3>Dashboard</h3>',
+  styleUrls: ['dashboard_component.css'],
   templateUrl: 'dashboard_component.html',
   directives: [coreDirectives, HeroSearchComponent, routerDirectives],
 )
+
 class DashboardComponent implements OnInit {
   List<Hero> heroes;
   final HeroService _heroService;

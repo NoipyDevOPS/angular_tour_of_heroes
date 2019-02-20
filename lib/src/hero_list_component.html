@@ -1,50 +1,23 @@
-<h1>{{title}}</h1>
 <h2>Heroes</h2>
+<div>
+  <label>Hero name:</label> <input #heroName />
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
 <ul class="heroes">
-    <li *ngFor="let hero of heroes" 
-    [class.selected]="hero === selected"
-    (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </li>
+  <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selected"
+      (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span>
+    <span>{{hero.name}}</span>
+    <button class="delete"
+      (click)="delete(hero); $event.stopPropagation()">x</button>
+  </li>
 </ul>
-
 <div *ngIf="selected != null">
   <h2>
     {{selected.name | uppercase}} is my hero
   </h2>
-  <button (click)="gotoDetail()">Views Details</button>
+  <button (click)="gotoDetail()">View Details</button>
 </div>
-
-<div *ngIf="selected != null">
-  <h2>{{selected.name}}</h2>
-  <div><label>id: </label>{{selected.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="selected.name" placeholder="name">
-  </div>
-</div>
-
-<div *ngIf="hero != null">
-  <h2>{{hero.name}}</h2>
-  <div>
-    <label>id: </label>{{hero.id}}</div>
-  </div>
-
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name"> 
-  </div>
-  <button (click)="goBack()">Back</button>
-</div>
-
-<div>
-  <label>Hero name:</label><input #heroName />
-  <button (click)="add(heroName.value); hero.value=''">Add</button>
-</div>
-
-<li *ngFor="let hero of heroes" [class.selected]="hero === selected"
-    (click)="onSelect(hero)">
-  <span class="badge">{{hero.id}}</span>
-  <span>{{hero.name}}</span>
-  <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>
-</li>
