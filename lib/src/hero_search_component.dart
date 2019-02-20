@@ -18,14 +18,11 @@ import 'hero.dart';
 class HeroSearchComponent implements OnInit {
   HeroSearchService _heroSearchService;
   Router _router;
-
   Stream<List<Hero>> heroes;
-  StreamController<String> _searchTerms =StreamController<String>.broadcast();
-
+  StreamController<String> _searchTerms = StreamController<String>.broadcast();
   HeroSearchComponent(this._heroSearchService, this._router) {}
-
   void search(String term) => _searchTerms.add(term);
-
+  
   void ngOnInit() async {
     heroes = _searchTerms.stream
         .transform(debounce(Duration(milliseconds: 300)))
@@ -39,8 +36,8 @@ class HeroSearchComponent implements OnInit {
   }
 
   String _heroUrl(int id) =>
-    RoutePaths.hero.toUrl(parameters: {idParam: '$id'});
+      RoutePaths.hero.toUrl(parameters: {idParam: '$id'});
 
-   Future<NavigationResult> gotoDetail(Hero hero) =>
+  Future<NavigationResult> gotoDetail(Hero hero) =>
       _router.navigate(_heroUrl(hero.id));
 }
