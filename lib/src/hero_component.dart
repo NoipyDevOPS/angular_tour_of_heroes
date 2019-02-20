@@ -21,13 +21,13 @@ import 'route_paths.dart';
   directives: [coreDirectives, formDirectives],
 )
 
-class HeroCompoenent implements OnActivate {
+class HeroComponent implements OnActivate {
   @Input()
   Hero hero;
   final HeroService _heroService;
   final Location _location;
 
-  HeroCompoenent(this._heroService, this._location);
+  HeroComponent(this._heroService, this._location);
 
   @override
   void onActivate(_, RouterState current) async {
