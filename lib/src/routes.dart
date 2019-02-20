@@ -9,7 +9,7 @@ export 'route_paths.dart';
 class Routes {
   static final hero = RouteDefinition(
     routePath: RoutePaths.hero,
-    component: hero_template.HeroCompoenentNgFactory,
+    component: hero_template.HeroComponentNgFactory,
   );
 
   static final heroes = RouteDefinition(
